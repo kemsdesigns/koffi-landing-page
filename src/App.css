@@ -1,0 +1,666 @@
+    @font-face {
+      font-family: "Nimbu Demo";
+      src: url("/assets/fonts/NimbuDemo-SemiBold.otf") format("opentype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Nimbu Demo";
+      src: url("/assets/fonts/NimbuDemo-Medium.otf") format("opentype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-cream: #fffdf7;
+      --green: #09543d;
+      --pink: #ffa9e9;
+      --brown: #461e10;
+      --text-dark: #332601;
+      --card-shadow: 0 0 67px rgba(0, 0, 0, 0.1);
+      --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #fff;
+      font-family: "Poppins", sans-serif;
+      color: var(--text-dark);
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      background: var(--green);
+      border-radius: 12px;
+      overflow: hidden;
+      height: 780px;
+      min-height: 780px;
+      padding: 24px 0 0 42px;
+      color: #fff;
+    }
+
+    .noise {
+      position: absolute;
+      inset: 0;
+      background: url("https://www.figma.com/api/mcp/asset/f69fd4f4-0192-469d-bc95-5866d712b591") center/220px 220px;
+      opacity: 0.09;
+      pointer-events: none;
+      animation: noiseShimmer 10s ease-in-out infinite;
+    }
+
+    .hero-flow {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: none;
+      display: flex;
+      flex-direction: column;
+      gap: 90px;
+    }
+
+    .hero-top {
+      position: absolute;
+      top: 28px;
+      left: 42px;
+      right: 42px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: auto;
+    }
+
+    .brand {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-family: "Joti One", cursive;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: .5px;
+      position: relative;
+      top: 4px;
+    }
+
+    .brand-mark {
+      width: 22px;
+      height: 22px;
+      background: url("https://www.figma.com/api/mcp/asset/2a73bf4b-ba36-4752-a933-5d77861a43be") center/contain no-repeat;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 8px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 16px 24px;
+      line-height: 145%;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .btn-pink {
+      background: var(--pink);
+      color: var(--brown);
+      box-shadow: 2px 2px 0 1px var(--brown);
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--brown);
+      box-shadow: 2px 2px 0 1px #012218;
+    }
+
+
+    .nav-cta {
+      background: var(--pink);
+      color: var(--brown);
+      border: 0;
+      border-radius: 5.976px;
+      box-shadow: 1.494px 1.494px 0 0.747px var(--brown);
+      padding: 14px;
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 14.193px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 180ms ease, transform 180ms var(--ease-out-strong), box-shadow 180ms ease;
+    }
+
+    .hero-main {
+      position: absolute;
+      top: 190px;
+      left: 42px;
+      right: 0;
+      width: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .hero-content {
+      width: min(628px, 100%);
+      max-width: 628px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-copy-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Nimbu Demo", "Times New Roman", serif;
+      font-size: 76px;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.5368px;
+      font-weight: 600;
+      max-width: 628px;
+    }
+
+    .hero-title-line {
+      display: block;
+      transform-origin: left center;
+      opacity: 0;
+      transform: scale(0.92);
+      animation: headlineReveal 560ms var(--ease-out-strong) forwards;
+    }
+
+    .hero-title-line:nth-child(2) { animation-delay: 110ms; }
+    .hero-title-line:nth-child(3) { animation-delay: 220ms; }
+
+    .highlight {
+      color: var(--brown);
+      background: var(--pink);
+      padding: 0 10px;
+      display: inline-block;
+    }
+
+    .hero-copy {
+      margin: 28px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 20px;
+      max-width: 520px;
+      line-height: 1.5;
+      letter-spacing: -0.5px;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: copyReveal 500ms var(--ease-out-strong) 1040ms forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: nowrap;
+      margin-top: 56px;
+    }
+
+    .hero-actions .btn {
+      height: 64px;
+      padding: 0 32px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: btnEnter 450ms var(--ease-out-strong) forwards;
+      transition: background-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .hero-actions .btn:nth-child(1) { animation-delay: 1180ms; }
+    .hero-actions .btn:nth-child(2) { animation-delay: 1260ms; }
+
+    .hero-art {
+      position: absolute;
+      right: -20px;
+      top: 0;
+      bottom: 0;
+      width: 55%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      overflow: visible;
+      z-index: 1;
+      pointer-events: none;
+      flex: 0 0 auto;
+    }
+
+    .hero-art img {
+      position: absolute;
+      right: 0;
+      bottom: -88px;
+      width: 760px;
+      height: auto;
+      max-width: none;
+      display: block;
+      transform: none;
+      object-fit: contain;
+      object-position: right bottom;
+      transform-origin: right bottom;
+      clip-path: inset(100% 0 0 0);
+      animation: heroImageIntro 980ms var(--ease-in-out-strong) 240ms forwards;
+    }
+
+    .word-small {
+      padding: 4px 8px;
+      line-height: inherit;
+      color: var(--brown);
+      display: inline-block;
+      position: relative;
+      isolation: isolate;
+      transform-origin: left center;
+      animation: smallTextColor 1ms linear 860ms both;
+    }
+
+    .word-small::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: #ffa9e9;
+      transform: scaleX(0);
+      transform-origin: left center;
+      animation: smallReveal 460ms var(--ease-out-strong) 860ms forwards;
+    }
+
+    .body {
+      margin-top: 4px;
+      border-radius: 12px;
+      background: var(--bg-cream);
+      padding: 90px 34px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .body::before,
+    .body::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      bottom: -10px;
+      width: 1px;
+      border-left: 1px dashed rgba(70, 30, 16, .15);
+    }
+
+    .body::before {
+      left: 34px;
+    }
+
+    .body::after {
+      right: 34px;
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin: 0 auto 56px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-head h2,
+    .section-head p,
+    .section-head .chip {
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+      transition: transform 520ms var(--ease-out-strong), opacity 520ms var(--ease-out-strong);
+    }
+
+    .section-head .chip { transition-delay: 40ms; }
+    .section-head h2 { transition-delay: 120ms; }
+    .section-head p { transition-delay: 190ms; }
+
+    .section-head.is-visible h2,
+    .section-head.is-visible p,
+    .section-head.is-visible .chip {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .chip {
+      display: inline-flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-family: "Poppins", sans-serif;
+      font-size: 10px;
+      line-height: 145%;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-family: "Nimbu Demo", "Times New Roman", serif;
+      font-size: 48px;
+      line-height: 145%;
+      color: var(--brown);
+      letter-spacing: -0.5px;
+      font-weight: 500;
+    }
+
+    .section-head p {
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      line-height: 145%;
+      margin: 0;
+    }
+
+    .cards {
+      max-width: 1185px;
+      margin: 0 auto;
+      height: 620px;
+      position: relative;
+    }
+
+    .card {
+      position: absolute;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      padding: 36px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      transition: transform 240ms var(--ease-out-strong), box-shadow 240ms ease, z-index 0ms, opacity 240ms ease;
+      opacity: 0;
+      transform-origin: center center;
+    }
+
+    .card.is-visible { opacity: 1; }
+    .card.c1.is-visible { animation: cardIn1 480ms var(--ease-out-strong) both; }
+    .card.c2.is-visible { animation: cardIn2 520ms var(--ease-out-strong) both; }
+    .card.c3.is-visible { animation: cardIn3 560ms var(--ease-out-strong) both; }
+
+    .cards:has(.card:hover) .card:not(:hover),
+    .cards:has(.card:focus-within) .card:not(:focus-within) {
+      z-index: 1;
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: rotate(0deg) !important;
+      z-index: 9999;
+      box-shadow: 0 18px 56px rgba(0, 0, 0, 0.16);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-family: "Poppins", sans-serif;
+      font-size: 24px;
+      line-height: 145%;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .card p {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      line-height: 145%;
+      max-width: 380px;
+    }
+
+    .icon {
+      width: 120px;
+      object-fit: contain;
+    }
+
+    .c1 {
+      left: 14%;
+      top: 18px;
+      width: 62%;
+      transform: rotate(1.5deg);
+    }
+
+    .c2 {
+      right: 6%;
+      top: 246px;
+      width: 62%;
+      transform: rotate(-3deg);
+    }
+
+    .c3 {
+      left: 20%;
+      top: 390px;
+      width: 62%;
+      transform: rotate(5.6deg);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        padding: 20px 0 28px 20px;
+        min-height: 0;
+        height: auto;
+      }
+
+      .hero-flow {
+        width: 100%;
+        max-width: 100%;
+        gap: 40px;
+      }
+
+      .hero-top,
+      .hero-main {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: auto;
+      }
+
+      .hero-main {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        width: auto;
+      }
+
+      .hero-copy {
+        font-size: 20px;
+      }
+
+      .hero-top {
+        margin-bottom: 40px;
+      }
+
+      .hero-art {
+        position: relative;
+        min-height: 340px;
+        height: 340px;
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .hero-art img {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: min(600px, 100%);
+        height: auto;
+        max-width: 100%;
+        transform: none;
+      }
+
+      .cards {
+        height: auto;
+        display: grid;
+        gap: 20px;
+      }
+
+      .card {
+        position: static;
+        width: 100%;
+        transform: none;
+      }
+
+      .card h3 {
+        font-size: 24px;
+      }
+
+      .body {
+        padding: 70px 18px;
+      }
+
+      .body::before,
+      .body::after {
+        display: none;
+      }
+    }
+
+    .hero-actions .btn:hover {
+      box-shadow: 3px 4px 0 1px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-actions .btn:active {
+      transform: none;
+      transition-duration: 100ms;
+    }
+
+    .btn-pink:hover,
+    .btn-pink.is-hovered { background: #f08fda; }
+    .btn-white:hover,
+    .btn-white.is-hovered { background: #ececec; }
+    .nav-cta:hover {
+      background: #f08fda;
+      transform: translateY(-1px);
+      box-shadow: 2px 2px 0 1px var(--brown);
+    }
+
+    @keyframes headlineReveal {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes copyReveal {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes btnEnter {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes smallReveal {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    @keyframes smallTextColor {
+      from { color: #fff; }
+      to { color: var(--brown); }
+    }
+
+    @keyframes noiseShimmer {
+      0% { background-position: 0 0; opacity: 0.12; }
+      50% { background-position: 4px 3px; opacity: 0.16; }
+      100% { background-position: 0 0; opacity: 0.12; }
+    }
+
+    @keyframes heroImageIntro {
+      from { clip-path: inset(100% 0 0 0); }
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    @keyframes cardIn1 {
+      from { opacity: 0; transform: rotate(1.5deg) translateY(14px) scale(0.98); }
+      to { opacity: 1; transform: rotate(1.5deg) translateY(0) scale(1); }
+    }
+
+    @keyframes cardIn2 {
+      from { opacity: 0; transform: rotate(-3deg) translateY(14px) scale(0.98); }
+      to { opacity: 1; transform: rotate(-3deg) translateY(0) scale(1); }
+    }
+
+    @keyframes cardIn3 {
+      from { opacity: 0; transform: rotate(5.6deg) translateY(14px) scale(0.98); }
+      to { opacity: 1; transform: rotate(5.6deg) translateY(0) scale(1); }
+    }
+
+    .custom-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 44px;
+      height: auto;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate3d(-100px, -100px, 0);
+      transform-origin: center center;
+      will-change: transform;
+      transition: transform 220ms cubic-bezier(0.22, 1.1, 0.36, 1);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    html.has-custom-cursor,
+    html.has-custom-cursor * {
+      cursor: none !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-actions .btn {
+        transition: none !important;
+        animation: none !important;
+      }
+      .hero-title-line,
+      .hero-copy,
+      .word-small,
+      .noise,
+      .hero-art img {
+        animation: none !important;
+        clip-path: none !important;
+        transform: none !important;
+      }
+      .custom-cursor { display: none !important; }
+      html.has-custom-cursor,
+      html.has-custom-cursor * {
+        cursor: auto !important;
+      }
+      .word-small::before {
+        animation: none !important;
+        transform: scaleX(1) !important;
+      }
+      [data-reveal],
+      [data-reveal] * {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover h3 {
+        color: #1f1406;
+        transition: color 180ms ease;
+      }
+    }
+
+    .btn {
+      font-family: "Poppins", sans-serif;
+    }
