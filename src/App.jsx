@@ -31,36 +31,35 @@ function App() {
 
     document.documentElement.classList.add('has-custom-cursor')
     const cursor = cursorRef.current
-    const state = { x: -100, y: -100, tx: -100, ty: -100, hover: false }
+    const state = { hover: false, lastX: -100, lastY: -100 }
     const interactiveSel = "a, button, [role='button'], input, textarea, select, label, [tabindex]:not([tabindex='-1'])"
 
+    const paintCursor = (clientX, clientY) => {
+      state.lastX = clientX
+      state.lastY = clientY
+      const scale = state.hover ? 1.12 : 1
+      cursor.style.transform = `translate3d(${clientX - 22}px, ${clientY - 40}px, 0) scale(${scale})`
+    }
+
     const onMove = (e) => {
-      state.tx = e.clientX
-      state.ty = e.clientY
+      paintCursor(e.clientX, e.clientY)
     }
 
     const onOver = (e) => {
-      if (e.target.closest(interactiveSel)) state.hover = true
+      if (!e.target.closest(interactiveSel)) return
+      state.hover = true
+      paintCursor(state.lastX, state.lastY)
     }
 
     const onOut = (e) => {
-      if (e.target.closest(interactiveSel)) state.hover = false
-    }
-
-    const tick = () => {
-      state.x += (state.tx - state.x) * 0.24
-      state.y += (state.ty - state.y) * 0.24
-      const scale = state.hover ? 1.12 : 1
-      const x = state.x - 22
-      const y = state.y - 40
-      cursor.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`
-      requestAnimationFrame(tick)
+      if (!e.target.closest(interactiveSel)) return
+      state.hover = false
+      paintCursor(state.lastX, state.lastY)
     }
 
     document.addEventListener('mousemove', onMove, { passive: true })
     document.addEventListener('mouseover', onOver)
     document.addEventListener('mouseout', onOut)
-    requestAnimationFrame(tick)
 
     return () => {
       document.documentElement.classList.remove('has-custom-cursor')
