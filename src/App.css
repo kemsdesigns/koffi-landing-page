@@ -622,6 +622,21 @@
       cursor: none !important;
     }
 
+    @media (hover: hover) and (pointer: fine) {
+      html,
+      body,
+      #root,
+      button,
+      a,
+      [role="button"],
+      input,
+      textarea,
+      select,
+      label {
+        cursor: none !important;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .hero-actions .btn {
         transition: none !important;
@@ -635,11 +650,6 @@
         animation: none !important;
         clip-path: none !important;
         transform: none !important;
-      }
-      .custom-cursor { display: none !important; }
-      html.has-custom-cursor,
-      html.has-custom-cursor * {
-        cursor: auto !important;
       }
       .word-small::before {
         animation: none !important;

@@ -22,7 +22,7 @@ function App() {
       rafId = requestAnimationFrame(raf)
     }
 
-    if (reduceMotion || touchLike || !cursorRef.current) {
+    if (touchLike || !cursorRef.current) {
       return () => {
         if (rafId) cancelAnimationFrame(rafId)
         if (lenis) lenis.destroy()
