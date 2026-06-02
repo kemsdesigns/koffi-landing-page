@@ -449,16 +449,20 @@
     }
 
     @media (max-width: 980px) {
+      body {
+        padding: 10px;
+      }
+
       .hero {
-        padding: 20px 0 28px 20px;
         min-height: 0;
         height: auto;
+        padding: 24px 20px 0;
       }
 
       .hero-flow {
         width: 100%;
         max-width: 100%;
-        gap: 40px;
+        gap: 0;
       }
 
       .hero-top,
@@ -470,38 +474,69 @@
         width: auto;
       }
 
+      .hero-top {
+        margin-bottom: 64px;
+        left: auto;
+        right: auto;
+        top: auto;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
       .hero-main {
         display: grid;
         grid-template-columns: 1fr;
+        gap: 30px;
       }
 
       .hero-content {
         width: auto;
+        max-width: 620px;
+      }
+
+      .hero-title {
+        font-size: clamp(46px, 11vw, 72px);
+        line-height: 0.98;
+        max-width: 9ch;
       }
 
       .hero-copy {
-        font-size: 20px;
+        font-size: 18px;
+        max-width: 33rem;
       }
 
-      .hero-top {
-        margin-bottom: 40px;
+      .hero-actions {
+        margin-top: 34px;
+        gap: 10px;
+      }
+
+      .hero-actions .btn {
+        height: 58px;
+        padding: 0 22px;
+        font-size: 14px;
       }
 
       .hero-art {
         position: relative;
-        min-height: 340px;
-        height: 340px;
+        min-height: clamp(300px, 58vw, 520px);
+        height: clamp(300px, 58vw, 520px);
         width: 100%;
         margin-left: 0;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        overflow: hidden;
       }
 
       .hero-art img {
-        position: relative;
-        left: auto;
-        top: auto;
-        width: min(600px, 100%);
+        position: absolute;
+        right: -18px;
+        bottom: -70px;
+        width: min(720px, 112vw);
         height: auto;
-        max-width: 100%;
+        max-width: none;
         transform: none;
       }
 
@@ -528,6 +563,113 @@
       .body::before,
       .body::after {
         display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 8px;
+      }
+
+      .hero {
+        border-radius: 10px;
+        padding: 22px 16px 0;
+      }
+
+      .brand {
+        font-size: 24px;
+      }
+
+      .brand-mark {
+        width: 20px;
+        height: 20px;
+      }
+
+      .hero-top {
+        margin-bottom: 54px;
+      }
+
+      .hero-title {
+        font-size: clamp(39px, 13vw, 54px);
+        max-width: 8.6ch;
+      }
+
+      .word-small {
+        padding: 2px 6px;
+      }
+
+      .hero-copy {
+        margin-top: 22px;
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: min(100%, 320px);
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-art {
+        min-height: 330px;
+        height: 330px;
+        margin-top: 4px;
+      }
+
+      .hero-art img {
+        right: -76px;
+        bottom: -42px;
+        width: 520px;
+      }
+
+      .body {
+        margin-top: 4px;
+        padding: 58px 14px;
+      }
+
+      .section-head {
+        margin-bottom: 38px;
+      }
+
+      h2 {
+        font-size: 38px;
+        line-height: 1.1;
+      }
+
+      .highlight {
+        padding: 0 8px;
+      }
+
+      .card {
+        padding: 24px 20px;
+        gap: 16px;
+      }
+
+      .card h3 {
+        font-size: 20px;
+      }
+
+      .card p {
+        font-size: 13px;
+      }
+
+      .icon {
+        width: 82px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .hero-art img {
+        right: -96px;
+        width: 500px;
       }
     }
 
