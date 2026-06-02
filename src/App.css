@@ -502,6 +502,20 @@
         max-width: 9ch;
       }
 
+      .hero-title-line,
+      .hero-copy,
+      .hero-actions .btn,
+      .word-small {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .word-small::before {
+        animation: none !important;
+        transform: scaleX(1) !important;
+      }
+
       .hero-copy {
         font-size: 18px;
         max-width: 33rem;
@@ -538,6 +552,8 @@
         height: auto;
         max-width: none;
         transform: none;
+        animation: none !important;
+        clip-path: none !important;
       }
 
       .cards {
@@ -615,14 +631,14 @@
       }
 
       .hero-art {
-        min-height: 330px;
-        height: 330px;
+        min-height: 360px;
+        height: 360px;
         margin-top: 4px;
       }
 
       .hero-art img {
         right: -76px;
-        bottom: -42px;
+        bottom: -28px;
         width: 520px;
       }
 
